@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Budgetron</title>
+        <link href="https://fonts.googleapis.com/css?family=Rancho&effect=3d" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="style.css" />
+        </head>
+
+    <body>
+        <div class="wrapper">
+            <div class="container">
+                <div class="subcontainer">
+
+                    <!-- Budget -->
+                    <div class="celkem_container">
+                        <h3 class="font-effect-3d">Budget</h3>
+                        <p class="hide error" id="budget_chyba">Nelze zadat žádnou nebo zápornou hodnotu.</p>
+                        <input type="number" id="celkem_hodnota" placeholder="Vložte hodnotu" />
+                        <button class="potvrdit" id="celkem-hodnota-button">Nastavit Budget</button>
+                    </div>
+
+                    <!-- Výdaje -->
+                    <div class="vydaj_container">
+                        <h3 class="font-effect-3d">Výdaje</h3>
+                        <p class="hide error" id="nazev_chyba">Nelze zadat žádnou nebo zápornou hodnotu.</p>
+                        <input type="text" class="nazev_vydaje" id="nazev_vydaje" placeholder="Název výdaje" />
+                        
+                        <!-- <p class="hide" id="vydaj_cena_chyba"> -->
+                        
+                        <input type="number" id="vydaj" placeholder="Vložte výši výdaje" />
+                        <button class="potvrdit" id="zadat_vydaj">Zadat výdaj</button>
+                    </div>
+                </div>
+
+                 <!-- Výstup -->
+                <div class="output_container flex-space">
+                    <div>
+                        <p>Celkový Budget</p>
+                        <span id="amt">0</span>
+                    </div>
+                    <div>
+                        <p>Výdaje</p>
+                        <span id="vydaj-value">0</span>
+                    </div>
+                    <div>
+                        <p>Stav</p>
+                        <span id="stav">0</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Seznam -->
+            <div class="seznam">
+                <h3 class="font-effect-3d">Seznam výdajů</h3>
+                <div class="seznam_container" id="seznam">
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Script -->
+        <script src="script.js"></script>
+
+    </body>
+</html>
+
