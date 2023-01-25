@@ -127,7 +127,7 @@ body {
 
 .sublist-content {
     width: 100%;
-    border-left: 0.3em solid #ff0000;
+    border-left: 0.3em solid rgb(248, 88, 88);
     margin-bottom: 0.6em;
     padding: 0.5em 1em;
     display: grid;
@@ -154,18 +154,90 @@ body {
     margin-bottom: 1em;
   }
 
-  .edit {
-    margin-left: auto;
-  }
-
-  .edit, .delete {
+  .delete {
     background: transparent;
     cursor: pointer;
     margin-right: 1.5em;
     border: none;
-    color: #587ef4;
+    color: rgb(254, 0, 0);
+  }
+
+
+
+  .con {
+    background-color: white;
+    box-shadow: 0 0.6em 1.2em rgba(83, 216, 239, 0.574);
+    padding: 2em 1.25em;
+    border-radius: 1em;
+    margin-top: 3em;
+    
+   }
+  
+  .con .box{
+    display: flex;
   }
   
+  .box div{
+    width: 100%;
+  }
+
+  select {
+    display: block;
+    width: 100%;
+    padding: 0.6em 0.3em;
+    border: 2px solid #d0d0d0;
+    border-radius: 0.3em;
+    color: black;
+    outline: none;
+    font-weight: 400;
+    margin-bottom: 1em;
+}
+
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.6em 0.3em;
+  border: 2px solid #d0d0d0;
+  border-radius: 0.3em;
+  color: black;
+  outline: none;
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+
+.con_button {
+  width: 98%;
+  height: 40px;
+  background: #364547;
+  color: white;
+  border-radius: 1em;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  margin: 0.5em 0;
+}
+
+.con h3 {
+  text-align: center;
+}
+
+.currency {
+  font-weight: 500;
+}
+
+#ans {
+  font-weight: 700;
+}
+
+.box input:focus {
+  border-color: black;
+}
+  
+
+
+
   @media screen and (max-width: 600px) {
     .wrapper {
       font-size: 14px;

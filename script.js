@@ -43,9 +43,9 @@ totalAmtButton.addEventListener("click", () => {
 }
 });
 
-//Function To Disable Edit and Delete Button
+// Zmizení delete buttonu
 const disableButtons = (bool) => {
-    let editButtons = document.getElementsByClassName("edit");
+   let editButtons = document.getElementsByClassName("edit");
     Array.from(editButtons).forEach((element) => {
       element.disabled = bool;
     });
@@ -76,19 +76,14 @@ const listCreator = (expenseName, expenseValue) => {
     sublistContent.classList.add("sublist-content", "flex-space");
     list.appendChild(sublistContent);
     sublistContent.innerHTML = `<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
-    let editButton = document.createElement("button");
-    editButton.classList.add("fa", "fa-pencil-square-o", "edit");
-    editButton.style.fontSize = "24px";
-    editButton.addEventListener("click", () => {
-        modifyElement(editButton, true);
-    });
+        
     let deleteButton = document.createElement("button");
     deleteButton.classList.add("fa", "fa-trash", "delete");
-    deleteButton.style.fontSize = "24px";
+    deleteButton.style.fontSize = "1.2em";
     deleteButton.addEventListener("click", () => {
-    modifyElement(deleteButton);    
+        modifyElement(deleteButton, true);    
     });
-    sublistContent.appendChild(editButton);
+    
     sublistContent.appendChild(deleteButton);
     document.getElementById("seznam").appendChild(sublistContent);
 };
@@ -102,6 +97,8 @@ checkAmountButton.addEventListener("click", () => {
         productTitleError.classList.remove("hide");
         return false;
     }
+    productTitleError.classList.add("hide");
+    
 
     //zobrazení tlačítek
     disableButtons(false);
@@ -124,3 +121,54 @@ checkAmountButton.addEventListener("click", () => {
     productTitle.value = "";
     vydaj.value = "";
 });
+
+
+    //konvertor
+
+    const select = document.querySelectorAll(".currency");
+    const con_button = document.getElementById("con_button");
+    const num = document.getElementById("num");
+    const ans = document.getElementById("ans");
+    
+    //fetch měn a výčet obsahu api
+    fetch("https://api.frankfurter.app/currencies")
+      .then((data) => data.json())
+      .then((data) => {
+        display(data);
+      });
+    
+    function display(data) {
+      const entries = Object.entries(data);
+      for (var i = 0; i < entries.length; i++) {
+        select[0].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+        select[1].innerHTML += `<option value="${entries[i][0]}">${entries[i][0]}</option>`;
+      }
+    }
+    
+    con_button.addEventListener("click", () => {
+      let currency1 = select[0].value;
+      let currency2 = select[1].value;
+      let value = num.value;
+    
+      //kontrola
+      if (currency1 != currency2) {
+        convert(currency1, currency2, value);
+      } else {
+        alert("Jsou vybrány stejné měny!");
+      }
+    });
+    
+    //převod
+    function convert(currency1, currency2, value) {
+      const host = "api.frankfurter.app";
+      fetch(
+        `https://${host}/latest?amount=${value}&from=${currency1}&to=${currency2}`
+      )
+        .then((val) => val.json())
+        .then((val) => {
+          console.log(Object.values(val.rates)[0]);
+          ans.value = Object.values(val.rates)[0];
+        });
+    }
+    
+
