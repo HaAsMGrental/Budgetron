@@ -35,9 +35,9 @@ totalAmtButton.addEventListener("click", () => {
 } else {
     errorMessage.classList.add("hide");
     //nastaví budget
-    amount.innerHTML = tempAmount;
+    amount.innerHTML = 0 - tempAmount;
     //výpočet aktuálního budgetu
-    balanceValue.innerText = tempAmount - expenditureValue.innerText;
+    balanceValue.innerText = 0 - tempAmount + expenditureValue.innerText;
     
     celkHodnota.value = "";
 }
